@@ -5,6 +5,7 @@ import Stage from 'telegraf/stage.js'
 import dotenv from 'dotenv'
 import main from './services/dumpa.js'
 import databaseHelper from './helpers/database.helper.js'
+import {stats} from './services/scenes/stats.js'
 import fs from 'fs'
 
 
@@ -14,20 +15,21 @@ start()
 main();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const stage = new Stage([ ]);
+const stage = new Stage([stats]);
+
 bot.use(session()); 
 bot.use(stage.middleware());
 bot.use()
 bot.start((ctx)=> stats());
+bot.command('d8eea', Stage.enter('stats'));
 bot.launch();
-bot.command('d8eea', (ctx)=> getStats(ctx, 'd8eea'));
 
 
 
 async function getStats(ctx, username){
     const stats = await databaseHelper.getCollection(username).find({}).sort({timestamp:-1}).limit(1).toArray();
     
-    console.log(JSON.parse(stats[0]))
+    console.log(stats[0])
 }
 
 

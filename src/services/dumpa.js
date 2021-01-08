@@ -42,7 +42,7 @@ async function saveStats(username){
     const stats = JSON.parse(fs.readFileSync( path+ user.uuid +'.json', 'utf8')).stats;
     stats.timestamp = new Date();
    // await databaseHelper.getCollection(username).insertOne(stats);
-    console.log(stats['minecraft:killed'])
+    
     
 }
 
