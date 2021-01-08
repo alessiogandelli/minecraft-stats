@@ -5,7 +5,7 @@ const url = process.env.CONNECTION_STRING;
 let connection;
 
 async function connect() {
-    connection = await (new MongoClient(process.env.CONNECTION_STRING , { useUnifiedTopology: true }).connect());
+    connection = await (new MongoClient(process.env.MONGODB_CONNECTION_STRING , { useUnifiedTopology: true }).connect());
     return connection;
 }
 

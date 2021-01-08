@@ -1,0 +1,1 @@
+fare il dotenc giusto con tutti i path e come se fosse un server vero
