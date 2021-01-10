@@ -26,11 +26,7 @@ bot.launch();
 
 
 
-async function getStats(ctx, username){
-    const stats = await databaseHelper.getCollection(username).find({}).sort({timestamp:-1}).limit(1).toArray();
-    
-    console.log(stats[0])
-}
+
 
 
 async function start(){
